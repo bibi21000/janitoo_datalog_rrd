@@ -1,0 +1,7 @@
+[janitoo.threads]
+datarrd = janitoo_datalog_rrd.thread:make_thread
+
+[janitoo.components]
+http.rrd = janitoo_datalog_rrd.components:make_http_resource
+datarrd.datasource = janitoo_datalog_rrd.components:make_datasource
+
