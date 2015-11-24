@@ -62,3 +62,12 @@ class TestDatalogSerser(JNTTServer, JNTTServerCommon):
     server_class = DatalogServer
     server_conf = "tests/data/janitoo_datalog.conf"
 
+    def test_101_wait_for_all_nodes(self):
+        self.onlyTravisTest()
+        self.start()
+        self.assertHeartbeatNode(hadd=HADD%(1014,0))
+        self.assertHeartbeatNode(hadd=HADD%(1014,1))
+        self.assertHeartbeatNode(hadd=HADD%(1018,0))
+        self.assertHeartbeatNode(hadd=HADD%(1018,1))
+        self.stop()
+
