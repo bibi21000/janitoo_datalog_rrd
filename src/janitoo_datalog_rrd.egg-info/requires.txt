@@ -1,2 +1,0 @@
-janitoo >= 0.0.6
-python-rrdtool >= 1.4.7

@@ -108,5 +108,8 @@ setup(
                      'janitoo >= %s'%'0.0.6',
                      'python-rrdtool >= 1.4.7',
                     ],
+    dependency_links = [
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s'%"0.0.7",
+    ],
     entry_points = janitoo_entry_points,
 )

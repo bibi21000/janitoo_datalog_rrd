@@ -41,7 +41,6 @@ from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
 from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
 
 from janitoo_datalog_rrd.thread import RrdThread
-from janitoo_datalog_rrd.log_rrd import RrdStore
 ##############################################################
 #Check that we are in sync with the official command classes
 #Must be implemented for non-regression

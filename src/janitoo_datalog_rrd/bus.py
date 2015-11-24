@@ -88,7 +88,7 @@ class RrdStoreThread(BaseThread):
         self._lock = threading.Lock()
         #~ self._cache_rrd_ttl = 60*60
         self._cache_rrd_ttl = 60*60
-        self._cache_pickle_ttl = 60
+        self._cache_pickle_ttl = 240
         self._cache_pickle_timer = None
         self._cache_dead_ttl = 60*60*24
         self._cache_dead_timer = None
