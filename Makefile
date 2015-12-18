@@ -122,7 +122,9 @@ develop:
 	@echo "Installation for developpers of ${MODULENAME} finished."
 
 travis-deps: deps
-	sudo apt-get -y install libevent-2.0-5 mosquitto
+	git clone https://github.com/bibi21000/janitoo_mosquitto.git
+	make -C janitoo_mosquitto deps
+	make -C janitoo_mosquitto develop
 	pip install git+git://github.com/bibi21000/janitoo_nosetests@master
 	pip install coveralls
 	@echo
