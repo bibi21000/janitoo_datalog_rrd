@@ -55,4 +55,4 @@ class TestDatarrdThread(JNTTThread, JNTTThreadCommon):
     """Test the datarrd thread
     """
     thread_name = "datarrd"
-
+    conf_file = "tests/data/janitoo_datalog_.conf"
