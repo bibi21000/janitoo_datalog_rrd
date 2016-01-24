@@ -34,6 +34,7 @@ import mock
 
 from janitoo_nosetests.server import JNTTServer, JNTTServerCommon
 from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
+from janitoo_nosetests.thread import JNTTThreadRun, JNTTThreadRunCommon
 
 from janitoo.utils import json_dumps, json_loads
 from janitoo.utils import HADD_SEP, HADD
@@ -54,42 +55,27 @@ COMMAND_DISCOVERY = 0x5000
 assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
 ##############################################################
 
-class TestDataRrdThread(JNTTThread, JNTTThreadCommon):
+class TestDataRrdThread(JNTTThreadRun, JNTTThreadRunCommon):
     """Test the datarrd thread
     """
     thread_name = "datarrd"
     conf_file = "tests/data/janitoo_datalog.conf"
 
     def test_101_thread_start_wait_long_stop(self):
-        if self.conf_file is None:
-            self.skipTest("No configuration file provided")
-        logging_fileConfig(self.conf_file)
-        self.assertFalse(self.thread_name is None)
-        with mock.patch('sys.argv', [self.prog, 'start', '--conf_file=%s'%self.conf_file]):
-            options = vars(jnt_parse_args())
-        th = self.factory[self.thread_name](options)
-        th.start()
         time.sleep(60)
         self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
         self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
-        th.stop()
 
-class TestHttpThread(JNTTThread, JNTTThreadCommon):
+class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
     """Test the datarrd thread
     """
     thread_name = "http"
     conf_file = "tests/data/janitoo_datalog.conf"
 
     def test_101_thread_start_wait_long_stop(self):
-        if self.conf_file is None:
-            self.skipTest("No configuration file provided")
-        logging_fileConfig(self.conf_file)
-        self.assertFalse(self.thread_name is None)
-        with mock.patch('sys.argv', [self.prog, 'start', '--conf_file=%s'%self.conf_file]):
-            options = vars(jnt_parse_args())
-        th = self.factory[self.thread_name](options)
-        th.start()
         time.sleep(60)
+        self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
+        self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
+        self.assertDir("/tmp/janitoo_test/home/public/rrd/images")
         self.assertFile("/tmp/janitoo_test/home/public/rrd/index.html")
-        #~ self.assertFile("/tmp/janitoo_test/home/public/rrd/js/javascriptrrd.wlibs.js")
-        th.stop()
+        self.assertFile("/tmp/janitoo_test/home/public/rrd/js/javascriptrrd.wlibs.js")
