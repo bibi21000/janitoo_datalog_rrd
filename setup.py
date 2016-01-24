@@ -41,7 +41,29 @@ for arg in sys.argv:
         filtered_args.append(arg)
 sys.argv = filtered_args
 
-def data_files_config(res, rsrc, src, pattern):
+#~ def data_files_config(res, rsrc, src, pattern):
+    #~ for root, dirs, fils in os.walk(src):
+        #~ if src == root:
+            #~ sub = []
+            #~ for fil in fils:
+                #~ sub.append(os.path.join(root,fil))
+            #~ res.append((rsrc, sub))
+            #~ for dire in dirs:
+                    #~ data_files_config(res, os.path.join(rsrc, dire), os.path.join(root, dire), pattern)
+#~
+#~ data_files = []
+#~ data_files_config(data_files, 'templates','src/templates/','*')
+#~ data_files_config(data_files, 'themes','src/janitoo_manager_proxy/themes/','*')
+#~ data_files_config(data_files, 'static','src/janitoo_manager_proxy/static/','*')
+#~ data_files_config(data_files, 'docs','src/docs/','*')
+#~ data_files_config(data_files, 'publlic','src/public/','*')
+#~
+    #~ package_data={
+    #~ '': ['docs/*', 'docs/images/*'],
+    #~ 'janitoo_datalog_rrd': ['public/css/*', 'public/js/*', 'public/images/*', 'public/templates/*', 'public/html/*'],
+    #~ },
+
+def get_data_files(res, rsrc, src, pattern):
     for root, dirs, fils in os.walk(src):
         if src == root:
             sub = []
@@ -49,19 +71,29 @@ def data_files_config(res, rsrc, src, pattern):
                 sub.append(os.path.join(root,fil))
             res.append((rsrc, sub))
             for dire in dirs:
-                    data_files_config(res, os.path.join(rsrc, dire), os.path.join(root, dire), pattern)
+                get_data_files(res, os.path.join(rsrc, dire), os.path.join(root, dire), pattern)
+    return res
 
 data_files = []
-data_files_config(data_files, 'templates','src/janitoo_manager_proxy/templates/','*')
-data_files_config(data_files, 'themes','src/janitoo_manager_proxy/themes/','*')
-data_files_config(data_files, 'static','src/janitoo_manager_proxy/static/','*')
-data_files_config(data_files, 'docs','src/docs/','*')
-data_files_config(data_files, 'publlic','src/public/','*')
+get_data_files(data_files, 'docs','src/docs/','*')
 
-    #~ package_data={
-    #~ '': ['docs/*', 'docs/images/*'],
-    #~ 'janitoo_datalog_rrd': ['public/css/*', 'public/js/*', 'public/images/*', 'public/templates/*', 'public/html/*'],
-    #~ },
+def get_package_data(res, pkgdir, src, pattern):
+    for root, dirs, fils in os.walk(os.path.join(pkgdir, src)):
+        #~ print os.path.join(pkgdir, src), root, dirs, fils
+        if os.path.join(pkgdir, src) == root:
+            sub = []
+            for fil in fils:
+                sub.append(os.path.join(src,fil))
+            res.extend(sub)
+            for dire in dirs:
+                get_package_data(res, pkgdir, os.path.join(src, dire), pattern)
+    return res
+
+package_data = []
+get_package_data(package_data, 'src', 'public','*')
+#~ get_package_data(package_data, 'src/janitoo_manager', 'themes','*')
+#~ get_package_data(package_data, 'src/janitoo_manager', 'static','*')
+#~ get_package_data(package_data, 'src/janitoo_manager', 'bower_components','*')
 
 #You must define a variable like the one below.
 #It will be used to collect entries without installing the package
@@ -105,6 +137,9 @@ setup(
     packages = find_packages('src', exclude=["scripts", "docs", "config"]),
     package_dir = { '': 'src' },
     include_package_data=True,
+    package_data={
+            'janitoo_datalog_rrd': package_data,
+        },
     data_files = data_files,
     install_requires=[
                      'janitoo >= %s'%'0.0.6',
