@@ -28,7 +28,9 @@ import time, datetime
 import unittest
 import threading
 import logging
+from logging.config import fileConfig as logging_fileConfig
 from pkg_resources import iter_entry_points
+import mock
 
 from janitoo_nosetests.server import JNTTServer, JNTTServerCommon
 from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
@@ -39,6 +41,7 @@ from janitoo.utils import TOPIC_HEARTBEAT
 from janitoo.utils import TOPIC_NODES, TOPIC_NODES_REPLY, TOPIC_NODES_REQUEST
 from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
 from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
+from janitoo.runner import jnt_parse_args
 
 from janitoo_datalog_rrd.thread import RrdThread
 ##############################################################
@@ -51,8 +54,42 @@ COMMAND_DISCOVERY = 0x5000
 assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
 ##############################################################
 
-class TestDatarrdThread(JNTTThread, JNTTThreadCommon):
+class TestDataRrdThread(JNTTThread, JNTTThreadCommon):
     """Test the datarrd thread
     """
     thread_name = "datarrd"
     conf_file = "tests/data/janitoo_datalog.conf"
+
+    def test_101_thread_start_wait_long_stop(self):
+        if self.conf_file is None:
+            self.skipTest("No configuration file provided")
+        logging_fileConfig(self.conf_file)
+        self.assertFalse(self.thread_name is None)
+        with mock.patch('sys.argv', [self.prog, 'start', '--conf_file=%s'%self.conf_file]):
+            options = vars(jnt_parse_args())
+        th = self.factory[self.thread_name](options)
+        th.start()
+        time.sleep(60)
+        self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
+        self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
+        th.stop()
+
+class TestHttpThread(JNTTThread, JNTTThreadCommon):
+    """Test the datarrd thread
+    """
+    thread_name = "http"
+    conf_file = "tests/data/janitoo_datalog.conf"
+
+    def test_101_thread_start_wait_long_stop(self):
+        if self.conf_file is None:
+            self.skipTest("No configuration file provided")
+        logging_fileConfig(self.conf_file)
+        self.assertFalse(self.thread_name is None)
+        with mock.patch('sys.argv', [self.prog, 'start', '--conf_file=%s'%self.conf_file]):
+            options = vars(jnt_parse_args())
+        th = self.factory[self.thread_name](options)
+        th.start()
+        time.sleep(60)
+        self.assertFile("/tmp/janitoo_test/home/public/rrd/index.html")
+        #~ self.assertFile("/tmp/janitoo_test/home/public/rrd/js/javascriptrrd.wlibs.js")
+        th.stop()
