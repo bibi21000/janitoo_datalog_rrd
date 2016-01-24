@@ -76,6 +76,7 @@ def get_data_files(res, rsrc, src, pattern):
 
 data_files = []
 get_data_files(data_files, 'docs','src/docs/','*')
+get_data_files(data_files, 'publlic','src/public/','*')
 
 def get_package_data(res, pkgdir, src, pattern):
     for root, dirs, fils in os.walk(os.path.join(pkgdir, src)):
@@ -89,8 +90,8 @@ def get_package_data(res, pkgdir, src, pattern):
                 get_package_data(res, pkgdir, os.path.join(src, dire), pattern)
     return res
 
-package_data = []
-get_package_data(package_data, 'src', 'public','*')
+#~ package_data = []
+#~ get_package_data(package_data, 'src/janitoo_datalog_rrd', 'public','*')
 #~ get_package_data(package_data, 'src/janitoo_manager', 'themes','*')
 #~ get_package_data(package_data, 'src/janitoo_manager', 'static','*')
 #~ get_package_data(package_data, 'src/janitoo_manager', 'bower_components','*')
@@ -137,9 +138,9 @@ setup(
     packages = find_packages('src', exclude=["scripts", "docs", "config"]),
     package_dir = { '': 'src' },
     include_package_data=True,
-    package_data={
-            'janitoo_datalog_rrd': package_data,
-        },
+    #~ package_data={
+            #~ 'janitoo_datalog_rrd': package_data,
+        #~ },
     data_files = data_files,
     install_requires=[
                      'janitoo >= %s'%'0.0.6',

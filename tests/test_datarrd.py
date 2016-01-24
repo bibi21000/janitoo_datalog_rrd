@@ -65,6 +65,7 @@ class TestDataRrdThread(JNTTThreadRun, JNTTThreadRunCommon):
         time.sleep(60)
         self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
         self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
+        self.assertFile("/tmp/janitoo_test/home/rrd/rrd_cache.pickle")
 
 class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
     """Test the datarrd thread

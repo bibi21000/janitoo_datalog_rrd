@@ -168,6 +168,13 @@ class RrdDatasource(JNTComponent):
             return self._bus.store.get_rrd_label(index, self.values['rrd_file'].data, config)
         return None
 
+    def get_package_name(self):
+        """Return the name of the package. Needed to publish static files
+
+        **MUST** be copy paste in every extension that publish statics files
+        """
+        return __package__
+
 class RrdResourceComponent(BasicResourceComponent):
     """ A resource ie /rrd """
 

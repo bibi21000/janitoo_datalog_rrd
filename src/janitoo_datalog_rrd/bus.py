@@ -817,3 +817,9 @@ class RrdBus(JNTBus):
             self.store.stop()
             self.store = None
 
+    def get_package_name(self):
+        """Return the name of the package. Needed to publish static files
+
+        **MUST** be copy paste in every extension that publish statics files
+        """
+        return __package__
