@@ -32,6 +32,8 @@ from logging.config import fileConfig as logging_fileConfig
 from pkg_resources import iter_entry_points
 import mock
 
+sys.path.insert(0,os.path.dirname(__name__))
+
 from janitoo_nosetests.server import JNTTServer, JNTTServerCommon
 from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
 from janitoo_nosetests.thread import JNTTThreadRun, JNTTThreadRunCommon
