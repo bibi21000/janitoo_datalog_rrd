@@ -35,7 +35,7 @@ from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
 
 from janitoo.utils import json_dumps, json_loads
 from janitoo.utils import HADD_SEP, HADD
-from janitoo.utils import TOPIC_HEARTBEAT
+from janitoo.utils import TOPIC_HEARTBEAT, NETWORK_REQUESTS
 from janitoo.utils import TOPIC_NODES, TOPIC_NODES_REPLY, TOPIC_NODES_REQUEST
 from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
 from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
@@ -63,11 +63,30 @@ class TestDatalogSerser(JNTTServer, JNTTServerCommon):
     server_conf = "tests/data/janitoo_datalog.conf"
 
     def test_101_wait_for_all_nodes(self):
-        self.onlyTravisTest()
         self.start()
-        self.assertHeartbeatNode(hadd=HADD%(1014,0))
-        self.assertHeartbeatNode(hadd=HADD%(1014,1))
-        self.assertHeartbeatNode(hadd=HADD%(1018,0))
-        self.assertHeartbeatNode(hadd=HADD%(1018,1))
-        self.stop()
+        try:
+            self.assertHeartbeatNode(hadd=HADD%(1014,0))
+            self.assertHeartbeatNode(hadd=HADD%(1014,1))
+            self.assertHeartbeatNode(hadd=HADD%(1018,0))
+            self.assertHeartbeatNode(hadd=HADD%(1018,1))
+        finally:
+            self.stop()
 
+    def test_111_server_start_no_error_in_log(self):
+        self.start()
+        try:
+            time.sleep(120)
+            self.assertInLogfile('Found heartbeats in timeout')
+            self.assertNotInLogfile('^ERROR ')
+        finally:
+            self.stop()
+
+    def test_112_request_nodes_and_values(self):
+        self.start()
+        try:
+            self.assertHeartbeatNode()
+            time.sleep(5)
+            for request in NETWORK_REQUESTS:
+                self.assertNodeRequest(cmd_class=COMMAND_DISCOVERY, uuid=request, node_hadd=HADD%(1014,0), client_hadd=HADD%(9999,0))
+        finally:
+            self.stop()

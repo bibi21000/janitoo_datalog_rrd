@@ -65,10 +65,13 @@ class TestDataRrdThread(JNTTThreadRun, JNTTThreadRunCommon):
 
     def test_101_thread_start_wait_long_stop(self):
         self.thread.start()
-        time.sleep(60)
-        self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
-        self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
-        self.assertFile("/tmp/janitoo_test/home/rrd/rrd_cache.pickle")
+        try:
+            time.sleep(60)
+            self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
+            self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
+            self.assertFile("/tmp/janitoo_test/home/rrd/rrd_cache.pickle")
+        finally:
+            self.thread.stop()
 
 class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
     """Test the datarrd thread
@@ -78,9 +81,12 @@ class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
 
     def test_101_thread_start_wait_long_stop(self):
         self.thread.start()
-        time.sleep(60)
-        self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
-        self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
-        self.assertDir("/tmp/janitoo_test/home/public/rrd/images")
-        self.assertFile("/tmp/janitoo_test/home/public/rrd/index.html")
-        self.assertFile("/tmp/janitoo_test/home/public/rrd/js/javascriptrrd.wlibs.js")
+        try:
+            time.sleep(60)
+            self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
+            self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
+            self.assertDir("/tmp/janitoo_test/home/public/rrd/images")
+            self.assertFile("/tmp/janitoo_test/home/public/rrd/index.html")
+            self.assertFile("/tmp/janitoo_test/home/public/rrd/js/javascriptrrd.wlibs.js")
+        finally:
+            self.thread.stop()
