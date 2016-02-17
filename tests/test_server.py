@@ -65,10 +65,7 @@ class TestDatalogSerser(JNTTServer, JNTTServerCommon):
     def test_101_wait_for_all_nodes(self):
         self.start()
         try:
-            self.assertHeartbeatNode(hadd=HADD%(1014,0))
-            self.assertHeartbeatNode(hadd=HADD%(1014,1))
-            self.assertHeartbeatNode(hadd=HADD%(1018,0))
-            self.assertHeartbeatNode(hadd=HADD%(1018,1))
+            self.assertHeartbeatNodes(hadds=[HADD%(1014,0), HADD%(1014,1), HADD%(1018,0), HADD%(1018,1)])
         finally:
             self.stop()
 
