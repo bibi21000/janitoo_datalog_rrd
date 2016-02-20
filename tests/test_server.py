@@ -67,8 +67,8 @@ class TestDatalogSerser(JNTTServer, JNTTServerCommon):
         self.start()
         try:
             time.sleep(120)
-            self.assertInLogfile('Found heartbeats in timeout')
-            self.assertNotInLogfile('^ERROR ')
         finally:
             self.stop()
+        self.assertInLogfile('Found heartbeats in timeout')
+        self.assertNotInLogfile('^ERROR ')
 
