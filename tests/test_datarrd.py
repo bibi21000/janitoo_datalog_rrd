@@ -60,8 +60,7 @@ class TestDataRrdThread(JNTTThreadRun, JNTTThreadRunCommon):
     def test_101_thread_start_wait_long_stop(self):
         self.thread.start()
         try:
-            self.assertHeartbeatNode(hadd=HADD%(1014, 0001))
-            time.sleep(31)
+            time.sleep(15)
             self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
             self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
             self.assertFile("/tmp/janitoo_test/home/rrd/rrd_cache.pickle")
@@ -77,7 +76,7 @@ class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
     def test_101_thread_start_wait_long_stop(self):
         self.thread.start()
         try:
-            self.assertHeartbeatNode(hadd=HADD%(1018, 0001))
+            time.sleep(15)
             self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
             self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
             self.assertDir("/tmp/janitoo_test/home/public/rrd/images")
