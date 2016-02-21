@@ -63,12 +63,3 @@ class TestDatalogSerser(JNTTServer, JNTTServerCommon):
     server_conf = "tests/data/janitoo_datalog.conf"
     hadds=[HADD%(1014,0), HADD%(1014,1), HADD%(1018,0), HADD%(1018,1)]
 
-    def test_101_server_start_no_error_in_log(self):
-        self.start()
-        try:
-            time.sleep(120)
-        finally:
-            self.stop()
-        self.assertNotInLogfile('^ERROR ')
-        self.assertInLogfile('Found heartbeats in timeout')
-
