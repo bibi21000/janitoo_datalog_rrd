@@ -23,6 +23,9 @@ __author__ = 'Sébastien GALLET aka bibi21000'
 __email__ = 'bibi21000@gmail.com'
 __copyright__ = "Copyright © 2013-2014-2015 Sébastien GALLET aka bibi21000"
 
+import warnings
+warnings.filterwarnings("ignore")
+
 import sys, os
 import time, datetime
 import unittest
@@ -47,15 +50,6 @@ from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_S
 from janitoo.runner import jnt_parse_args
 
 from janitoo_datalog_rrd.thread import RrdThread
-##############################################################
-#Check that we are in sync with the official command classes
-#Must be implemented for non-regression
-from janitoo.classes import COMMAND_DESC
-
-COMMAND_DISCOVERY = 0x5000
-
-assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
-##############################################################
 
 class TestDataRrdThread(JNTTThreadRun, JNTTThreadRunCommon):
     """Test the datarrd thread
@@ -66,7 +60,8 @@ class TestDataRrdThread(JNTTThreadRun, JNTTThreadRunCommon):
     def test_101_thread_start_wait_long_stop(self):
         self.thread.start()
         try:
-            time.sleep(60)
+            self.assertHeartbeatNode(hadd=HADD%(1014, 0001))
+            time.sleep(31)
             self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
             self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
             self.assertFile("/tmp/janitoo_test/home/rrd/rrd_cache.pickle")
@@ -82,7 +77,7 @@ class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
     def test_101_thread_start_wait_long_stop(self):
         self.thread.start()
         try:
-            time.sleep(60)
+            self.assertHeartbeatNode(hadd=HADD%(1018, 0001))
             self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
             self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
             self.assertDir("/tmp/janitoo_test/home/public/rrd/images")
