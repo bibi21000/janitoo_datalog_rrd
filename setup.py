@@ -143,11 +143,13 @@ setup(
         },
     data_files = data_files,
     install_requires=[
-                     'janitoo >= %s'%'0.0.6',
+                     'janitoo',
+                     'janitoo_factory',
                      'python-rrdtool >= 1.4.7',
                     ],
     dependency_links = [
-      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s'%"0.0.7",
+      'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s',
+      'https://github.com/bibi21000/janitoo_factory/archive/master.zip#egg=janitoo_factory',
     ],
     entry_points = janitoo_entry_points,
 )

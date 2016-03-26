@@ -48,7 +48,6 @@ from janitoo.value import JNTValue
 from janitoo.classes import COMMAND_DESC
 from janitoo.bus import JNTBus
 from janitoo.mqtt import MQTTClient
-from janitoo.threads.http import HttpResourceComponent
 import rrdtool
 
 ##############################################################
