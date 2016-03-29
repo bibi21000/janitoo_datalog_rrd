@@ -41,29 +41,7 @@ for arg in sys.argv:
         filtered_args.append(arg)
 sys.argv = filtered_args
 
-#~ def data_files_config(res, rsrc, src, pattern):
-    #~ for root, dirs, fils in os.walk(src):
-        #~ if src == root:
-            #~ sub = []
-            #~ for fil in fils:
-                #~ sub.append(os.path.join(root,fil))
-            #~ res.append((rsrc, sub))
-            #~ for dire in dirs:
-                    #~ data_files_config(res, os.path.join(rsrc, dire), os.path.join(root, dire), pattern)
-#~
-#~ data_files = []
-#~ data_files_config(data_files, 'templates','src/templates/','*')
-#~ data_files_config(data_files, 'themes','src/janitoo_manager_proxy/themes/','*')
-#~ data_files_config(data_files, 'static','src/janitoo_manager_proxy/static/','*')
-#~ data_files_config(data_files, 'docs','src/docs/','*')
-#~ data_files_config(data_files, 'publlic','src/public/','*')
-#~
-    #~ package_data={
-    #~ '': ['docs/*', 'docs/images/*'],
-    #~ 'janitoo_datalog_rrd': ['public/css/*', 'public/js/*', 'public/images/*', 'public/templates/*', 'public/html/*'],
-    #~ },
-
-def get_data_files(res, rsrc, src, pattern):
+def data_files_config(res, rsrc, src, pattern):
     for root, dirs, fils in os.walk(src):
         if src == root:
             sub = []
@@ -71,12 +49,10 @@ def get_data_files(res, rsrc, src, pattern):
                 sub.append(os.path.join(root,fil))
             res.append((rsrc, sub))
             for dire in dirs:
-                get_data_files(res, os.path.join(rsrc, dire), os.path.join(root, dire), pattern)
-    return res
+                    data_files_config(res, os.path.join(rsrc, dire), os.path.join(root, dire), pattern)
 
 data_files = []
-get_data_files(data_files, 'docs','src/docs/','*')
-#~ get_data_files(data_files, 'publlic','src/public/','*')
+data_files_config(data_files, 'docs','src/docs/','*')
 
 def get_package_data(res, pkgdir, src, pattern):
     for root, dirs, fils in os.walk(os.path.join(pkgdir, src)):
