@@ -41,3 +41,20 @@ from janitoo.runner import Runner, jnt_parse_args
 from janitoo.server import JNTServer
 from janitoo.utils import HADD_SEP, HADD
 
+from janitoo_datalog_rrd.server import DatalogServer
+
+class TestSerser(JNTTDockerServer, JNTTDockerServerCommon):
+    """Test the server
+    """
+    loglevel = logging.DEBUG
+    path = '/tmp/janitoo_test'
+    broker_user = 'toto'
+    broker_password = 'toto'
+    server_class = DatalogServer
+    server_conf = "tests/data/janitoo_datalog.conf"
+    hadds=[HADD%(1014,0), HADD%(1014,1), HADD%(1018,0), HADD%(1018,1)]
+
+    def test_040_server_start_no_error_in_log(self):
+        JNTTDockerServer.onlyDockerTest()
+        JNTTDockerServerCommon.minimal_040_server_start_reload_restart(self)
+
