@@ -54,7 +54,3 @@ class TestSerser(JNTTDockerServer, JNTTDockerServerCommon):
     server_conf = "tests/data/janitoo_datalog.conf"
     hadds=[HADD%(1014,0), HADD%(1014,1), HADD%(1018,0), HADD%(1018,1)]
 
-    def test_040_server_start_no_error_in_log(self):
-        JNTTDockerServer.onlyDockerTest()
-        JNTTDockerServerCommon.minimal_040_server_start_reload_restart(self)
-
