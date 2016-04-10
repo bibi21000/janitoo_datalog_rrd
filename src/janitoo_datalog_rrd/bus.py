@@ -152,7 +152,7 @@ class RrdStoreThread(BaseThread):
     def post_loop(self):
         """Launch after finishing the run loop. The node manager is still available.
         """
-        logger.debug("stop_timer_pickle in postloop")
+        logger.debug("[%s] - stop timers in postloop", self.__class__.__name__)
         self.stop_timer_pickle()
         self.stop_timer_dead()
         self._mqttc.unsubscribe(topic=TOPIC_VALUES)
@@ -283,7 +283,7 @@ class RrdStoreThread(BaseThread):
         """
         if etime is None:
             etime = (datetime.datetime.now() - self.epoch).total_seconds()
-        logger.debug("Rotate the rrd data in cache")
+        logger.debug("[%s] - Rotate the rrd data in cache", self.__class__.__name__)
         self._lock.acquire()
         try:
             if rrd_file is None or rrd_file not in self._cache:
@@ -396,19 +396,19 @@ class RrdStoreThread(BaseThread):
             self._cache[rrd_file]["labels"][index] = rrd_label
             return rrd_label
         except:
-            logger.exception("Can't retrieve add_ctrl, add_node from hadd %s", hadd)
+            logger.exception("[%s] - Can't retrieve add_ctrl, add_node from hadd %s", self.__class__.__name__, hadd)
             return None
 
     def dump(self):
         """Dump data to disk using pickle
         """
         self._lock.acquire()
-        logger.debug("Dump cache to disk")
+        logger.debug("[%s] - Dump cache to disk")
         try:
             filename = self.get_pickle_filename()
             pickle.dump( self._cache, open( filename, "wb" ) )
         except:
-            logger.exception("Exception when dumping data to file")
+            logger.exception("[%s] - Exception when dumping data to file", self.__class__.__name__)
         finally:
             self._lock.release()
 
@@ -416,13 +416,14 @@ class RrdStoreThread(BaseThread):
         """Restore data from disk using pickle
         """
         self._lock.acquire()
-        logger.debug("Restore cache from disk")
+        logger.debug("[%s] - Restore cache from disk")
         try:
             filename = self.get_pickle_filename()
-            self._cache = pickle.load( open( filename, "rb" ) )
+            if os.path.exists(filename):
+                self._cache = pickle.load( open( filename, "rb" ) )
         except:
             self._cache = {}
-            logger.exception("Exception when restoring data from dump")
+            logger.exception("[%s] - Exception when restoring data from dump", self.__class__.__name__)
         finally:
             self._lock.release()
 
@@ -437,7 +438,7 @@ class RrdStoreThread(BaseThread):
         """Remove dead entries from cache
         """
         self.stop_timer_dead()
-        logger.debug("Remove dead entries in cache")
+        logger.debug("[%s] - Remove dead entries in cache", self.__class__.__name__)
         try:
             now = datetime.datetime.now()
             dead_time = now - datetime.timedelta(seconds=self._cache_dead_ttl)
@@ -447,7 +448,7 @@ class RrdStoreThread(BaseThread):
                     self._cache[key]['last_update'] = now
                 try:
                     if key in self._cache and self._cache[key]['last_update']  < dead_time:
-                        logger.debug("Remove dead entries in cache : %s", key)
+                        logger.debug("[%s] - Remove dead entries in cache : %s", self.__class__.__name__, key)
                         self.remove_rrd_from_list(key)
                         del self._cache[key]
                 except:
@@ -455,7 +456,7 @@ class RrdStoreThread(BaseThread):
                 finally:
                     self._lock.release()
         except:
-            logger.exception("Exception when removing dead entries")
+            logger.exception("[%s] - Exception when removing dead entries", self.__class__.__name__)
         self.start_timer_dead()
 
     def stop_timer_dead(self):
@@ -502,7 +503,7 @@ class RrdStoreThread(BaseThread):
             try:
                 self.flush(rrd)
             except:
-                logger.exception("Exception in flush_all : rrd = %s", rrd)
+                logger.exception("[%s] - Exception in flush_all : rrd = %s", self.__class__.__name__, rrd)
 
     def timer_flush(self, rrd_file):
         """Flush data from in cache from a value via a separate thread in a timer
@@ -518,7 +519,7 @@ class RrdStoreThread(BaseThread):
         if rrd_file is None or rrd_file not in self._cache:
             return False
         self._lock.acquire()
-        logger.info("Flush rrd_file %s", rrd_file)
+        logger.info("[%s] - Flush rrd_file %s", self.__class__.__name__, rrd_file)
         try:
             rrd_dict = self._cache[rrd_file]
             epochs = sorted(rrd_dict['values'].keys())
@@ -587,7 +588,7 @@ class RrdStoreThread(BaseThread):
             if rrd_file is not None and rrd_file in self._cache:
                 del self._cache[rrd_file]
         except:
-            logger.exception("Exception when removing config")
+            logger.exception("[%s] - Exception when removing config", self.__class__.__name__)
         finally:
             self._lock.release()
 
@@ -631,7 +632,7 @@ class RrdStoreThread(BaseThread):
         rrd_sources = []
         try:
             if rrd_file is None:
-                logger.warning("Can't add %s in cache", rrd_file)
+                logger.warning("[%s] - Can't add %s in cache", self.__class__.__name__, rrd_file)
                 return False
             if rrd_file not in self._cache:
                 self._cache[rrd_file] = {'step':step, 'last_update':datetime.datetime.now(), 'labels' : {}, 'types':{}, 'hadds':{}, 'uuids':{}, 'indexes':{}, 'values':{}}
@@ -644,7 +645,7 @@ class RrdStoreThread(BaseThread):
                 self._cache[rrd_file]["indexes"][key] = value_index
                 rrd_sources.append("DS:%s:%s:%s:U:U" %(rrd_label, rrd_type, step*2))
         except:
-            logger.exception("Exception when adding config in cache")
+            logger.exception("[%s] - Exception when adding config in cache", self.__class__.__name__)
         finally:
             self._lock.release()
         #print "rrd_sources :", rrd_sources
@@ -667,7 +668,7 @@ class RrdStoreThread(BaseThread):
                                      "RRA:MIN:0.5:288:1440")
             self.add_rrd_to_list(rrd_file)
         except:
-            logger.exception("Exception when creating rrd file %s", rrd_file)
+            logger.exception("[%s] - Exception when creating rrd file %s", self.__class__.__name__, rrd_file)
 
     def add_rrd_to_list(self, rrd_file):
         """Add the rrd_file to index.txt
