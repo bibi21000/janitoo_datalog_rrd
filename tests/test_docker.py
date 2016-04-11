@@ -43,7 +43,7 @@ from janitoo.utils import HADD_SEP, HADD
 
 from janitoo_datalog_rrd.server import DatalogServer
 
-class TestSerser(JNTTDockerServer, JNTTDockerServerCommon):
+class TestDatalogRRDSerser(JNTTDockerServer, JNTTDockerServerCommon):
     """Test the server
     """
     loglevel = logging.DEBUG
