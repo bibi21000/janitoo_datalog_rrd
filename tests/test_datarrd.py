@@ -58,9 +58,8 @@ class TestDataRrdThread(JNTTThreadRun, JNTTThreadRunCommon):
     conf_file = "tests/data/janitoo_datalog.conf"
 
     def test_101_thread_start_wait_long_stop(self):
-        self.thread.start()
+        self.wait_for_nodeman()
         try:
-            time.sleep(15)
             self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
             self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
             self.assertFile("/tmp/janitoo_test/home/rrd/rrd_cache.pickle")
@@ -74,9 +73,8 @@ class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
     conf_file = "tests/data/janitoo_datalog.conf"
 
     def test_101_thread_start_wait_long_stop(self):
-        self.thread.start()
+        self.wait_for_nodeman()
         try:
-            time.sleep(15)
             self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
             self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
             self.assertDir("/tmp/janitoo_test/home/public/rrd/images")
