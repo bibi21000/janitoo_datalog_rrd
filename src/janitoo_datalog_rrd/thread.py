@@ -39,8 +39,9 @@ from janitoo.node import JNTNode
 from janitoo.value import JNTValue
 from janitoo.classes import COMMAND_DESC
 
-def make_thread(options):
-    if get_option_autostart(options, 'datarrd') == True:
+OID = 'datarrd'
+def make_thread(options, force=False):
+    if get_option_autostart(options, OID) == True or force:
         return RrdThread(options)
     else:
         return None
@@ -67,6 +68,6 @@ class RrdThread(JNTBusThread):
         """Build the bus
         """
         from janitoo_datalog_rrd.bus import RrdBus
-        self.section = 'datarrd'
+        self.section = OID
         self.bus = RrdBus(options=self.options, oid=self.section, product_name="RRD controller")
 
