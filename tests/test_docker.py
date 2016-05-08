@@ -54,3 +54,13 @@ class TestDatalogRRDSerser(JNTTDockerServer, JNTTDockerServerCommon):
     server_conf = "tests/data/janitoo_datalog.conf"
     hadds=[HADD%(1014,0), HADD%(1014,1), HADD%(1018,0), HADD%(1018,1)]
 
+    def test_040_server_start_no_error_in_log(self):
+        JNTTDockerServerCommon.test_040_server_start_no_error_in_log(self)
+        self.assertFile("/tmp/janitoo_test/home/rrd/rrd_cache.pickle")
+        self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
+        self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
+        self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
+        self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
+        self.assertDir("/tmp/janitoo_test/home/public/rrd/images")
+        self.assertFile("/tmp/janitoo_test/home/public/rrd/index.html")
+        self.assertFile("/tmp/janitoo_test/home/public/rrd/js/javascriptrrd.wlibs.js")
