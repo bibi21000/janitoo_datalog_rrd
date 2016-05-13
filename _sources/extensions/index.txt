@@ -1,0 +1,19 @@
+janitoo_datalog_rrd package
+===========================
+
+Show janitoo's extensions.
+
+Core extensions
+---------------
+
+Threads
+^^^^^^^
+
+ - datarrd (janitoo_datalog_rrd.thread:make_thread)
+
+Components
+^^^^^^^^^^
+
+ - http.rrd (janitoo_datalog_rrd.components:make_http_resource)
+ - datarrd.datasource (janitoo_datalog_rrd.components:make_datasource)
+
