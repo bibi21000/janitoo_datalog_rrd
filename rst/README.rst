@@ -21,3 +21,7 @@ A section
 =========
 A text in this section.
 
+
+Documentation
+=============
+You can browse online documentation here : https://bibi21000.github.io/janitoo_datalog_rrd/.
