@@ -182,9 +182,9 @@ class RrdStoreThread(BaseThread):
                         elif len(epochs) > 1 and epochs[0] + self._cache_rrd_ttl < etime :
                             #We should flush to the rrd
                             self.flush(key)
-                    except:
+                    except Exception:
                         logger.exception("[%s] - Exception when rotating %s in cache", self.__class__.__name__, key)
-            except:
+            except Exception:
                 logger.exception("[%s] - Exception when rotating in cache", self.__class__.__name__)
             self._rrd_rotate_next_run = datetime.datetime.now() + datetime.timedelta(seconds=self._rrd_rotate_ttl)
         self._reloadevent.wait(self.loop_sleep)
@@ -221,7 +221,7 @@ class RrdStoreThread(BaseThread):
                         #~ logger.debug("[%s] - update_last %s,%s,%s : %s", self.__class__.__name__, hadd, value_uuid, value_index)
                         if (hadd, uuid, index) in store_index:
                             self.update_last(hadd, uuid, index, data[nval][kval]['data'])
-        except:
+        except Exception:
             logger.exception("[%s] - Exception in on_value", self.__class__.__name__)
 
     def create_store_index(self):
@@ -238,9 +238,9 @@ class RrdStoreThread(BaseThread):
                         ret.append( (self._cache[rrd]['hadds'][index], \
                                      self._cache[rrd]['uuids'][index], \
                                      self._cache[rrd]['indexes'][index]) )
-                    except:
+                    except Exception:
                         logger.exception('[%s] - Exception in create_store_index : rrd= %s, index = %s', self.__class__.__name__, rrd, index)
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in create_store_index : rrd = %s', self.__class__.__name__, rrd)
         #~ logger.debug("[%s] - create_store_index %s", self.__class__.__name__, ret)
         return ret
@@ -291,7 +291,7 @@ class RrdStoreThread(BaseThread):
             self._cache[rrd_file]['values'][etime] = {}
             for key in self._cache[rrd_file]['hadds'].keys():
                 self._cache[rrd_file]['values'][etime][key]='U'
-        except:
+        except Exception:
             logger.exception("[%s] - Exception when rotating %s in cache", self.__class__.__name__, rrd_file)
         finally:
             self._lock.release()
@@ -310,14 +310,14 @@ class RrdStoreThread(BaseThread):
             self._reloadevent.clear()
             try:
                 self.pre_loop()
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in pre_loop', self.__class__.__name__)
                 self._stopevent.set()
             while not self._reloadevent.isSet() and not self._stopevent.isSet():
                 self.loop()
             try:
                 self.post_loop()
-            except:
+            except Exception:
                 logger.exception('[%s] - Exception in post_loop', self.__class__.__name__)
 
     def get_rrd_directory(self, params):
@@ -395,7 +395,7 @@ class RrdStoreThread(BaseThread):
             hadd, value_uuid, value_index, rrd_type, rrd_label = config.split('|')
             self._cache[rrd_file]["labels"][index] = rrd_label
             return rrd_label
-        except:
+        except Exception:
             logger.exception("[%s] - Can't retrieve add_ctrl, add_node from hadd %s", self.__class__.__name__, hadd)
             return None
 
@@ -407,7 +407,7 @@ class RrdStoreThread(BaseThread):
         try:
             filename = self.get_pickle_filename()
             pickle.dump( self._cache, open( filename, "wb" ) )
-        except:
+        except Exception:
             logger.exception("[%s] - Exception when dumping data to file", self.__class__.__name__)
         finally:
             self._lock.release()
@@ -421,7 +421,7 @@ class RrdStoreThread(BaseThread):
             filename = self.get_pickle_filename()
             if os.path.exists(filename):
                 self._cache = pickle.load( open( filename, "rb" ) )
-        except:
+        except Exception:
             self._cache = {}
             logger.exception("[%s] - Exception when restoring data from dump", self.__class__.__name__)
         finally:
@@ -451,11 +451,11 @@ class RrdStoreThread(BaseThread):
                         logger.debug("[%s] - Remove dead entries in cache : %s", self.__class__.__name__, key)
                         self.remove_rrd_from_list(key)
                         del self._cache[key]
-                except:
+                except Exception:
                     logger.exception("[%s] - Exception when removing dead entry %s in cache", self.__class__.__name__, key)
                 finally:
                     self._lock.release()
-        except:
+        except Exception:
             logger.exception("[%s] - Exception when removing dead entries", self.__class__.__name__)
         self.start_timer_dead()
 
@@ -502,7 +502,7 @@ class RrdStoreThread(BaseThread):
         for rrd in rrds:
             try:
                 self.flush(rrd)
-            except:
+            except Exception:
                 logger.exception("[%s] - Exception in flush_all : rrd = %s", self.__class__.__name__, rrd)
 
     def timer_flush(self, rrd_file):
@@ -540,17 +540,17 @@ class RrdStoreThread(BaseThread):
                                 if rrd_dict['values'][epoch][key_idx] is not None:
                                     val = rrd_dict['values'][epoch][key_idx]
                                 rrd_line = '%s:%s' %(rrd_line, val)
-                            except:
+                            except Exception:
                                 rrd_line = '%s:%s' %(rrd_line, 'U')
                                 logger.exception("[%s] - Exception when flushing cache for %s epoch %s:%s", self.__class__.__name__, rrd_file, epoch, key_idx)
                         del self._cache[rrd_file]['values'][epoch]
                     if rrd_line != "":
                         rrd_data.append(rrd_line)
-                except:
+                except Exception:
                     logger.exception("[%s] - Exception when flushing cache for %s epoch %s", self.__class__.__name__, rrd_file, epoch)
             if len (rrd_data) > 1:
                 rrdtool.update(rrd_data)
-        except:
+        except Exception:
             logger.exception("[%s] - Exception when flushing cache for %s", self.__class__.__name__, rrd_file)
         finally:
             self._lock.release()
@@ -587,7 +587,7 @@ class RrdStoreThread(BaseThread):
                 os.remove(filename)
             if rrd_file is not None and rrd_file in self._cache:
                 del self._cache[rrd_file]
-        except:
+        except Exception:
             logger.exception("[%s] - Exception when removing config", self.__class__.__name__)
         finally:
             self._lock.release()
@@ -644,7 +644,7 @@ class RrdStoreThread(BaseThread):
                 self._cache[rrd_file]["uuids"][key] = value_uuid
                 self._cache[rrd_file]["indexes"][key] = value_index
                 rrd_sources.append("DS:%s:%s:%s:U:U" %(rrd_label, rrd_type, step*2))
-        except:
+        except Exception:
             logger.exception("[%s] - Exception when adding config in cache", self.__class__.__name__)
         finally:
             self._lock.release()
@@ -667,7 +667,7 @@ class RrdStoreThread(BaseThread):
                                      "RRA:MIN:0.5:144:1440",
                                      "RRA:MIN:0.5:288:1440")
             self.add_rrd_to_list(rrd_file)
-        except:
+        except Exception:
             logger.exception("[%s] - Exception when creating rrd file %s", self.__class__.__name__, rrd_file)
 
     def add_rrd_to_list(self, rrd_file):

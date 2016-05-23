@@ -35,7 +35,7 @@ from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
 SKIP = False
 try:
     from janitoo_nosetests.packaging import JNTTPackaging, JNTTPackagingCommon
-except:
+except Exception:
     print "Skip tests"
     SKIP = True
 
