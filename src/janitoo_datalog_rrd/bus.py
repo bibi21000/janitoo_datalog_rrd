@@ -171,7 +171,7 @@ class RrdStoreThread(BaseThread):
             #Check for data that need a rotation
             etime = (datetime.datetime.now() - self.epoch).total_seconds()
             try:
-                for key in self._cache.keys():
+                for key in list(self._cache.keys()):
                     try:
                         epochs = sorted(self._cache[key]['values'].keys())
                         #~ print "epochs : ", epochs
@@ -206,7 +206,7 @@ class RrdStoreThread(BaseThread):
             data = json_loads(message.payload)
             if 'genre' in data:
                 data = {0:{0:data}}
-            elif 'genre' in data[data.keys()[0]]:
+            elif 'genre' in data[list(data.keys())[0]]:
                 data = {0:data}
             store_index = self.create_store_index()
             for nval in data:
@@ -229,10 +229,10 @@ class RrdStoreThread(BaseThread):
             :ret: a list of tuple () of values in cache
         """
         ret = []
-        rrds = self._cache.keys()
+        rrds = list(self._cache.keys())
         for rrd in rrds:
             try:
-                indexes = self._cache[rrd]['indexes'].keys()
+                indexes = list(self._cache[rrd]['indexes'].keys())
                 for index in indexes:
                     try:
                         ret.append( (self._cache[rrd]['hadds'][index], \
@@ -251,9 +251,9 @@ class RrdStoreThread(BaseThread):
         """
         #~ logger.debug("[%s] - update_last %s,%s,%s : %s", self.__class__.__name__, hadd, value_uuid, value_index, data)
         ret = []
-        rrds = self._cache.keys()
+        rrds = list(self._cache.keys())
         for rrd in rrds:
-            indexes = self._cache[rrd]['indexes'].keys()
+            indexes = list(self._cache[rrd]['indexes'].keys())
             for index in indexes:
                 if self._cache[rrd]['hadds'][index]==hadd and \
                         self._cache[rrd]['uuids'][index]==value_uuid and \
@@ -289,7 +289,7 @@ class RrdStoreThread(BaseThread):
             if rrd_file is None or rrd_file not in self._cache:
                 return False
             self._cache[rrd_file]['values'][etime] = {}
-            for key in self._cache[rrd_file]['hadds'].keys():
+            for key in list(self._cache[rrd_file]['hadds'].keys()):
                 self._cache[rrd_file]['values'][etime][key]='U'
         except Exception:
             logger.exception("[%s] - Exception when rotating %s in cache", self.__class__.__name__, rrd_file)
@@ -442,7 +442,7 @@ class RrdStoreThread(BaseThread):
         try:
             now = datetime.datetime.now()
             dead_time = now - datetime.timedelta(seconds=self._cache_dead_ttl)
-            for key in self._cache.keys():
+            for key in list(self._cache.keys()):
                 self._lock.acquire()
                 if 'last_update' not in self._cache[key]:
                     self._cache[key]['last_update'] = now
@@ -498,7 +498,7 @@ class RrdStoreThread(BaseThread):
     def flush_all(self):
         """Flush all data to rrd files and remove them from cache
         """
-        rrds = self._cache.keys()
+        rrds = list(self._cache.keys())
         for rrd in rrds:
             try:
                 self.flush(rrd)
@@ -564,7 +564,7 @@ class RrdStoreThread(BaseThread):
         """Retrieve the number of series of values cached
         """
         numb=0
-        for rrd_file in self._cache.keys():
+        for rrd_file in list(self._cache.keys()):
             numb += len(self._cache[rrd_file]['values'])
         return numb
 

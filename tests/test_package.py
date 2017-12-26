@@ -36,7 +36,7 @@ SKIP = False
 try:
     from janitoo_nosetests.packaging import JNTTPackaging, JNTTPackagingCommon
 except Exception:
-    print "Skip tests"
+    print("Skip tests")
     SKIP = True
 
 from janitoo.utils import json_dumps, json_loads
