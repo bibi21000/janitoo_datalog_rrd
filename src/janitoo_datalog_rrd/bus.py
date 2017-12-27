@@ -45,7 +45,6 @@ from janitoo.utils import json_dumps, json_loads
 from janitoo.component import JNTComponent
 from janitoo.node import JNTNode
 from janitoo.value import JNTValue
-from janitoo.classes import COMMAND_DESC
 from janitoo.bus import JNTBus
 from janitoo.mqtt import MQTTClient
 from janitoo.compat import str_to_native, to_ascii
@@ -492,9 +491,7 @@ class RrdStoreThread(BaseThread):
     def timer_flush_all(self):
         """Flush all data via a separate thread in a timer
         """
-        if hadd is None or value_uuid is None or value_index is None:
-            return False
-        th = threading.Timer(self._thread_delay, self.flush_all, args=(hadd, value_uuid, value_index))
+        th = threading.Timer(self._thread_delay, self.flush_all)
         th.start()
 
     def flush_all(self):
@@ -510,8 +507,6 @@ class RrdStoreThread(BaseThread):
     def timer_flush(self, rrd_file):
         """Flush data from in cache from a value via a separate thread in a timer
         """
-        if hadd is None or value_uuid is None or value_index is None:
-            return False
         th = threading.Timer(self._thread_delay, self.flush, args=(rrd_file))
         th.start()
 

@@ -45,7 +45,6 @@ from janitoo.utils import json_dumps, json_loads
 from janitoo.component import JNTComponent
 from janitoo.node import JNTNode
 from janitoo.value import JNTValue
-from janitoo.classes import COMMAND_DESC
 from janitoo.bus import JNTBus
 from janitoo.mqtt import MQTTClient
 from janitoo_factory.threads.http import BasicResourceComponent
