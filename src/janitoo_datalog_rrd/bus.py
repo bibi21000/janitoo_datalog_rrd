@@ -665,8 +665,8 @@ class RrdStoreThread(BaseThread):
                                      "RRA:MIN:0.5:144:1440",
                                      "RRA:MIN:0.5:288:1440"
                                      ] )
-            logger.debug("[%s] - Get or create rrd file %s : %s", self.__class__.__name__, rrd_file, rrd_sources)
             filename = self.get_rrd_filename(rrd_file)
+            logger.debug("[%s] - Get or create rrd file %s (%s) : %s", self.__class__.__name__, filename, type(filename), rrd_sources)
             if os.path.exists(filename) == False:
                 rrdtool.create(to_ascii(filename), "--start", '0', "--step", str(step), rrd_sources)
             self.add_rrd_to_list(rrd_file)
