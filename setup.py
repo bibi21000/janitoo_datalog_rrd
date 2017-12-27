@@ -121,11 +121,12 @@ setup(
     install_requires=[
                      'janitoo',
                      'janitoo_factory',
-                     'python-rrdtool >= 1.4.7',
+                     'python-rrdtool',
                     ],
     dependency_links = [
       'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo-%s',
       'https://github.com/bibi21000/janitoo_factory/archive/master.zip#egg=janitoo_factory',
+      'https://github.com/kyokenn/python-rrdtool/archive/master.zip#egg=python-rrdtool',
     ],
     entry_points = janitoo_entry_points,
 )

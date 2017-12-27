@@ -48,6 +48,8 @@ from janitoo.value import JNTValue
 from janitoo.classes import COMMAND_DESC
 from janitoo.bus import JNTBus
 from janitoo.mqtt import MQTTClient
+from janitoo.compat import str_to_native, to_ascii
+
 import rrdtool
 
 ##############################################################
@@ -523,7 +525,7 @@ class RrdStoreThread(BaseThread):
         try:
             rrd_dict = self._cache[rrd_file]
             epochs = sorted(rrd_dict['values'].keys())
-            rrd_data = [self.get_rrd_filename(rrd_file)]
+            rrd_data = [to_ascii(self.get_rrd_filename(rrd_file))]
             last_epoch = epochs[-1]
             for epoch in epochs:
                 try:
@@ -643,18 +645,14 @@ class RrdStoreThread(BaseThread):
                 self._cache[rrd_file]["hadds"][key] = hadd
                 self._cache[rrd_file]["uuids"][key] = value_uuid
                 self._cache[rrd_file]["indexes"][key] = value_index
-                rrd_sources.append("DS:%s:%s:%s:U:U" %(rrd_label, rrd_type, step*2))
+                rrd_sources.append(to_ascii("DS:%s:%s:%s:U:U" %(rrd_label, rrd_type, step*2)))
         except Exception:
             logger.exception("[%s] - Exception when adding config in cache", self.__class__.__name__)
         finally:
             self._lock.release()
         #print "rrd_sources :", rrd_sources
         try:
-            filename = self.get_rrd_filename(rrd_file)
-            if os.path.exists(filename) == False:
-                rrdtool.create(filename, "--step", str(step), "--start", '0',
-                                     rrd_sources,
-                                     "RRA:AVERAGE:0.5:1:1440",
+            rrd_sources.extend( ["RRA:AVERAGE:0.5:1:1440",
                                      "RRA:AVERAGE:0.5:12:1440",
                                      "RRA:AVERAGE:0.5:144:1440",
                                      "RRA:AVERAGE:0.5:288:1440",
@@ -665,10 +663,15 @@ class RrdStoreThread(BaseThread):
                                      "RRA:MIN:0.5:1:1440",
                                      "RRA:MIN:0.5:12:1440",
                                      "RRA:MIN:0.5:144:1440",
-                                     "RRA:MIN:0.5:288:1440")
+                                     "RRA:MIN:0.5:288:1440"
+                                     ] )
+            logger.debug("[%s] - Get or create rrd file %s : %s", self.__class__.__name__, rrd_file, rrd_sources)
+            filename = self.get_rrd_filename(rrd_file)
+            if os.path.exists(filename) == False:
+                rrdtool.create(to_ascii(filename), "--start", '0', "--step", str(step), rrd_sources)
             self.add_rrd_to_list(rrd_file)
         except Exception:
-            logger.exception("[%s] - Exception when creating rrd file %s", self.__class__.__name__, rrd_file)
+            logger.exception("[%s] - Exception when creating rrd file %s (%s)", self.__class__.__name__, rrd_file, filename)
 
     def add_rrd_to_list(self, rrd_file):
         """Add the rrd_file to index.txt
