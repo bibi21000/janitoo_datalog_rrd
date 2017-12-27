@@ -59,7 +59,7 @@ class TestDataRrdThread(JNTTThreadRun, JNTTThreadRunCommon):
 
     def test_101_thread_start_wait_long_stop(self):
         self.wait_for_nodeman()
-        time.sleep(30)
+        time.sleep(10)
         try:
             self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/num_threads.rrd")
             self.assertFile("/tmp/janitoo_test/home/public/rrd/rrds/index.txt")
@@ -76,7 +76,7 @@ class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
 
     def test_101_thread_start_wait_long_stop(self):
         self.wait_for_nodeman()
-        time.sleep(30)
+        time.sleep(10)
         try:
             self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
             self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
