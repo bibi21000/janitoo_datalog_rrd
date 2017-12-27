@@ -53,21 +53,22 @@ def data_files_config(res, rsrc, src, pattern):
 
 data_files = []
 data_files_config(data_files, 'docs','src/docs/','*')
+data_files_config(data_files, 'public','src/public/','*')
 
-def get_package_data(res, pkgdir, src, pattern):
-    for root, dirs, fils in os.walk(os.path.join(pkgdir, src)):
+#~ def get_package_data(res, pkgdir, src, pattern):
+    #~ for root, dirs, fils in os.walk(os.path.join(pkgdir, src)):
         #~ print os.path.join(pkgdir, src), root, dirs, fils
-        if os.path.join(pkgdir, src) == root:
-            sub = []
-            for fil in fils:
-                sub.append(os.path.join(src,fil))
-            res.extend(sub)
-            for dire in dirs:
-                get_package_data(res, pkgdir, os.path.join(src, dire), pattern)
-    return res
+        #~ if os.path.join(pkgdir, src) == root:
+            #~ sub = []
+            #~ for fil in fils:
+                #~ sub.append(os.path.join(src,fil))
+            #~ res.extend(sub)
+            #~ for dire in dirs:
+                #~ get_package_data(res, pkgdir, os.path.join(src, dire), pattern)
+    #~ return res
 
-package_data = []
-get_package_data(package_data, 'src/janitoo_datalog_rrd', 'public','*')
+#~ package_data = []
+#~ get_package_data(package_data, 'src', 'public','*')
 #~ get_package_data(package_data, 'src/janitoo_manager', 'themes','*')
 #~ get_package_data(package_data, 'src/janitoo_manager', 'static','*')
 #~ get_package_data(package_data, 'src/janitoo_manager', 'bower_components','*')
@@ -111,12 +112,12 @@ setup(
     zip_safe = False,
     keywords = "rrd,graph",
     scripts=['src/scripts/jnt_datalog_rrd'],
-    packages = find_packages('src', exclude=["scripts", "docs", "config"]),
+    packages = find_packages('src', exclude=["scripts", "docs", "public", "config"]),
     package_dir = { '': 'src' },
-    include_package_data=True,
-    package_data={
-            'janitoo_datalog_rrd': package_data,
-        },
+    #~ include_package_data=True,
+    #~ package_data={
+            #~ 'janitoo_datalog_rrd': package_data,
+        #~ },
     data_files = data_files,
     install_requires=[
                      'janitoo',

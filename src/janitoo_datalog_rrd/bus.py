@@ -404,7 +404,7 @@ class RrdStoreThread(BaseThread):
         """Dump data to disk using pickle
         """
         self._lock.acquire()
-        logger.debug("[%s] - Dump cache to disk")
+        logger.debug("[%s] - Dump cache to disk", self.__class__.__name__)
         try:
             filename = self.get_pickle_filename()
             pickle.dump( self._cache, open( filename, "wb" ) )
@@ -417,7 +417,7 @@ class RrdStoreThread(BaseThread):
         """Restore data from disk using pickle
         """
         self._lock.acquire()
-        logger.debug("[%s] - Restore cache from disk")
+        logger.debug("[%s] - Restore cache from disk", self.__class__.__name__)
         try:
             filename = self.get_pickle_filename()
             if os.path.exists(filename):
