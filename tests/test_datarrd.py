@@ -76,7 +76,7 @@ class TestHttpThread(JNTTThreadRun, JNTTThreadRunCommon):
 
     def test_101_thread_start_wait_long_stop(self):
         self.wait_for_nodeman()
-        time.sleep(15)
+        time.sleep(30)
         try:
             self.assertDir("/tmp/janitoo_test/home/public/rrd/js")
             self.assertDir("/tmp/janitoo_test/home/public/rrd/css")
