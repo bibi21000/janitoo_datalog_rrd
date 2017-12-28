@@ -5,13 +5,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>janitoo_datalog_rrd package &mdash; janitoo_datalog_rrd 0.0.7 documentation</title>
+    <title>janitoo_datalog_rrd package &#8212; janitoo_datalog_rrd 0.0.7 documentation</title>
     
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -19,7 +17,8 @@
         VERSION:     '0.0.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -30,16 +29,17 @@
     <script type="text/javascript" src="../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="janitoo_datalog_rrd 0.0.7 documentation" href="../index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -120,59 +120,59 @@
 <p><a class="reference external" href="http://www.maketecheasier.com/finding-raspberry-pi-system-information/">http://www.maketecheasier.com/finding-raspberry-pi-system-information/</a></p>
 <dl class="class">
 <dt id="janitoo_datalog_rrd.bus.RrdBus">
-<em class="property">class </em><tt class="descclassname">janitoo_datalog_rrd.bus.</tt><tt class="descname">RrdBus</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">janitoo.bus.JNTBus</span></tt></p>
+<em class="property">class </em><code class="descclassname">janitoo_datalog_rrd.bus.</code><code class="descname">RrdBus</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.bus.JNTBus</span></code></p>
 <p>A pseudo-bus to manage RRDTools</p>
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdBus.check_heartbeat">
-<tt class="descname">check_heartbeat</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.check_heartbeat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_heartbeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.check_heartbeat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that the component is &#8216;available&#8217;</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdBus.get_count_series">
-<tt class="descname">get_count_series</tt><big>(</big><em>node_uuid</em>, <em>index</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.get_count_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.get_count_series" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_count_series</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.get_count_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.get_count_series" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdBus.get_count_values">
-<tt class="descname">get_count_values</tt><big>(</big><em>node_uuid</em>, <em>index</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.get_count_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.get_count_values" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_count_values</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.get_count_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.get_count_values" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdBus.get_package_name">
-<tt class="descname">get_package_name</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.get_package_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.get_package_name" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_package_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.get_package_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.get_package_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the name of the package. Needed to publish static files</p>
 <p><strong>MUST</strong> be copy paste in every extension that publish statics files</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdBus.set_action">
-<tt class="descname">set_action</tt><big>(</big><em>node_uuid</em>, <em>index</em>, <em>data</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.set_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.set_action" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_action</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.set_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.set_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Act on the server</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdBus.start">
-<tt class="descname">start</tt><big>(</big><em>mqttc</em>, <em>trigger_thread_reload_cb=None</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.start" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start</code><span class="sig-paren">(</span><em>mqttc</em>, <em>trigger_thread_reload_cb=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.start" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdBus.stop">
-<tt class="descname">stop</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.stop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdBus.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdBus.stop" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread">
-<em class="property">class </em><tt class="descclassname">janitoo_datalog_rrd.bus.</tt><tt class="descname">RrdStoreThread</tt><big>(</big><em>section</em>, <em>options={}</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">janitoo.thread.BaseThread</span></tt></p>
+<em class="property">class </em><code class="descclassname">janitoo_datalog_rrd.bus.</code><code class="descname">RrdStoreThread</code><span class="sig-paren">(</span><em>section</em>, <em>options={}</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.thread.BaseThread</span></code></p>
 <p>The Rdd cache thread</p>
 <p>Implement a cache.</p>
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.add_config">
-<tt class="descname">add_config</tt><big>(</big><em>rrd_file</em>, <em>step</em>, <em>config</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.add_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.add_config" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_config</code><span class="sig-paren">(</span><em>rrd_file</em>, <em>step</em>, <em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.add_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.add_config" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>ret = rrdtool.create(&#8220;example.rrd&#8221;, &#8220;&#8211;step&#8221;, &#8220;1800&#8221;, &#8220;&#8211;start&#8221;, &#8216;0&#8217;,</dt>
 <dd>&#8220;DS:metric1:GAUGE:2000:U:U&#8221;,
@@ -201,111 +201,111 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.add_rrd_to_list">
-<tt class="descname">add_rrd_to_list</tt><big>(</big><em>rrd_file</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.add_rrd_to_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.add_rrd_to_list" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_rrd_to_list</code><span class="sig-paren">(</span><em>rrd_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.add_rrd_to_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.add_rrd_to_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add the rrd_file to index.txt</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.config_thread">
-<tt class="descname">config_thread</tt><big>(</big><em>cache_rrd_ttl=None</em>, <em>cache_pickle_ttl=None</em>, <em>cache_dead_ttl=None</em>, <em>dirmask='rrd'</em>, <em>filemask='%(rrd_file)s.rrd'</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.config_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.config_thread" title="Permalink to this definition">¶</a></dt>
+<code class="descname">config_thread</code><span class="sig-paren">(</span><em>cache_rrd_ttl=None</em>, <em>cache_pickle_ttl=None</em>, <em>cache_dead_ttl=None</em>, <em>dirmask='rrd'</em>, <em>filemask='%(rrd_file)s.rrd'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.config_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.config_thread" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.create_store_index">
-<tt class="descname">create_store_index</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.create_store_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.create_store_index" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_store_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.create_store_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.create_store_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an in dex of keys
 :ret: a list of tuple () of values in cache</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.dump">
-<tt class="descname">dump</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.dump" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.dump" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dump data to disk using pickle</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.flush">
-<tt class="descname">flush</tt><big>(</big><em>rrd_file</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.flush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.flush" title="Permalink to this definition">¶</a></dt>
+<code class="descname">flush</code><span class="sig-paren">(</span><em>rrd_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.flush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.flush" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush data from a value to rrd file and remove them from cache</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.flush_all">
-<tt class="descname">flush_all</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.flush_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.flush_all" title="Permalink to this definition">¶</a></dt>
+<code class="descname">flush_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.flush_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.flush_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush all data to rrd files and remove them from cache</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_count_series">
-<tt class="descname">get_count_series</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_count_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_count_series" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_count_series</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_count_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_count_series" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the number of series of values cached</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_count_values">
-<tt class="descname">get_count_values</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_count_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_count_values" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_count_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_count_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_count_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the number of values cached</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_list_filename">
-<tt class="descname">get_list_filename</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_list_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_list_filename" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_list_filename</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_list_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_list_filename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Restore data from disk using pickle</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_pickle_filename">
-<tt class="descname">get_pickle_filename</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_pickle_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_pickle_filename" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_pickle_filename</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_pickle_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_pickle_filename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Restore data from disk using pickle</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_directory">
-<tt class="descname">get_rrd_directory</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_directory" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_rrd_directory</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_directory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get and create the direcotry if needed</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_file">
-<tt class="descname">get_rrd_file</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_rrd_file</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_file" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_filename">
-<tt class="descname">get_rrd_filename</tt><big>(</big><em>rrd_file</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_filename" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_rrd_filename</code><span class="sig-paren">(</span><em>rrd_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_filename" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_httpname">
-<tt class="descname">get_rrd_httpname</tt><big>(</big><em>rrd_file</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_httpname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_httpname" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_rrd_httpname</code><span class="sig-paren">(</span><em>rrd_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_httpname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_httpname" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_label">
-<tt class="descname">get_rrd_label</tt><big>(</big><em>index</em>, <em>rrd_file</em>, <em>config</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_label" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_rrd_label</code><span class="sig-paren">(</span><em>index</em>, <em>rrd_file</em>, <em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_label" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_public_directory">
-<tt class="descname">get_rrd_public_directory</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_public_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_public_directory" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_rrd_public_directory</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_rrd_public_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_rrd_public_directory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get and create the direcotry if needed</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.get_values_to_dump">
-<tt class="descname">get_values_to_dump</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_values_to_dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_values_to_dump" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_values_to_dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.get_values_to_dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.get_values_to_dump" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of tuples (hadd, value_uuid, value_index) of values in timeout. They must be flush to disk</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.loop">
-<tt class="descname">loop</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.loop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.loop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Launch after finishing the run loop. The node manager is still available.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.on_value">
-<tt class="descname">on_value</tt><big>(</big><em>client</em>, <em>userdata</em>, <em>message</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.on_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.on_value" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_value</code><span class="sig-paren">(</span><em>client</em>, <em>userdata</em>, <em>message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.on_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.on_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>On value</p>
 <p>Do not lock as it don&#8217;t add new values to dict. Should be ok using keys instead of iterator.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -314,7 +314,7 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>client</strong> (<em>paho.mqtt.client.Client</em>) &#8211; the Client instance that is calling the callback.</li>
-<li><strong>userdata</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#all" title="(in Python v2.7)"><em>all</em></a>) &#8211; user data of any type and can be set when creating a new client instance or with user_data_set(userdata).</li>
+<li><strong>userdata</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#all" title="(in Python v2.7)"><em>all</em></a>) &#8211; user data of any type and can be set when creating a new client instance or with user_data_set(userdata).</li>
 <li><strong>message</strong> (<em>paho.mqtt.client.MQTTMessage</em>) &#8211; The message variable is a MQTTMessage that describes all of the message parameters.</li>
 </ul>
 </td>
@@ -325,105 +325,105 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.post_loop">
-<tt class="descname">post_loop</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.post_loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.post_loop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">post_loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.post_loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.post_loop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Launch after finishing the run loop. The node manager is still available.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.pre_loop">
-<tt class="descname">pre_loop</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.pre_loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.pre_loop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pre_loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.pre_loop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.pre_loop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Launch before entering the run loop. The node manager is available.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.remove_config">
-<tt class="descname">remove_config</tt><big>(</big><em>rrd_file</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.remove_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.remove_config" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove_config</code><span class="sig-paren">(</span><em>rrd_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.remove_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.remove_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove an entry in cache and its rrd file</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.remove_rrd_from_list">
-<tt class="descname">remove_rrd_from_list</tt><big>(</big><em>rrd_file</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.remove_rrd_from_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.remove_rrd_from_list" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove_rrd_from_list</code><span class="sig-paren">(</span><em>rrd_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.remove_rrd_from_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.remove_rrd_from_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove the rrd from index.txt</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.restore">
-<tt class="descname">restore</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.restore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.restore" title="Permalink to this definition">¶</a></dt>
+<code class="descname">restore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.restore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.restore" title="Permalink to this definition">¶</a></dt>
 <dd><p>Restore data from disk using pickle</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.rrd_rotate">
-<tt class="descname">rrd_rotate</tt><big>(</big><em>rrd_file</em>, <em>etime=None</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.rrd_rotate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.rrd_rotate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rrd_rotate</code><span class="sig-paren">(</span><em>rrd_file</em>, <em>etime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.rrd_rotate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.rrd_rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rotate</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.run">
-<tt class="descname">run</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the loop</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.start_timer_dead">
-<tt class="descname">start_timer_dead</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.start_timer_dead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.start_timer_dead" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start_timer_dead</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.start_timer_dead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.start_timer_dead" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.start_timer_pickle">
-<tt class="descname">start_timer_pickle</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.start_timer_pickle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.start_timer_pickle" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start_timer_pickle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.start_timer_pickle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.start_timer_pickle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.stop_timer_dead">
-<tt class="descname">stop_timer_dead</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.stop_timer_dead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.stop_timer_dead" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stop_timer_dead</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.stop_timer_dead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.stop_timer_dead" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.stop_timer_pickle">
-<tt class="descname">stop_timer_pickle</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.stop_timer_pickle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.stop_timer_pickle" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stop_timer_pickle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.stop_timer_pickle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.stop_timer_pickle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.timer_add_config">
-<tt class="descname">timer_add_config</tt><big>(</big><em>rrd_file</em>, <em>step</em>, <em>config</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_add_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_add_config" title="Permalink to this definition">¶</a></dt>
+<code class="descname">timer_add_config</code><span class="sig-paren">(</span><em>rrd_file</em>, <em>step</em>, <em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_add_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_add_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a config via a separate thread in a timer</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.timer_dead">
-<tt class="descname">timer_dead</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_dead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_dead" title="Permalink to this definition">¶</a></dt>
+<code class="descname">timer_dead</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_dead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_dead" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove dead entries from cache</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.timer_flush">
-<tt class="descname">timer_flush</tt><big>(</big><em>rrd_file</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_flush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_flush" title="Permalink to this definition">¶</a></dt>
+<code class="descname">timer_flush</code><span class="sig-paren">(</span><em>rrd_file</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_flush"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_flush" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush data from in cache from a value via a separate thread in a timer</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.timer_flush_all">
-<tt class="descname">timer_flush_all</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_flush_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_flush_all" title="Permalink to this definition">¶</a></dt>
+<code class="descname">timer_flush_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_flush_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_flush_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush all data via a separate thread in a timer</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.timer_pickle">
-<tt class="descname">timer_pickle</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_pickle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_pickle" title="Permalink to this definition">¶</a></dt>
+<code class="descname">timer_pickle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_pickle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_pickle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dump cache to file using pickle</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.timer_rrd_rotate">
-<tt class="descname">timer_rrd_rotate</tt><big>(</big><em>rrd_file</em>, <em>etime=None</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_rrd_rotate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_rrd_rotate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">timer_rrd_rotate</code><span class="sig-paren">(</span><em>rrd_file</em>, <em>etime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.timer_rrd_rotate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.timer_rrd_rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rotate via a separate thread in a timer</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.bus.RrdStoreThread.update_last">
-<tt class="descname">update_last</tt><big>(</big><em>hadd</em>, <em>value_uuid</em>, <em>value_index</em>, <em>data</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.update_last"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.update_last" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_last</code><span class="sig-paren">(</span><em>hadd</em>, <em>value_uuid</em>, <em>value_index</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/bus.html#RrdStoreThread.update_last"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.bus.RrdStoreThread.update_last" title="Permalink to this definition">¶</a></dt>
 <dd><p>An helper to find
 :ret:</p>
 </dd></dl>
@@ -438,41 +438,41 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 <p><a class="reference external" href="http://www.maketecheasier.com/finding-raspberry-pi-system-information/">http://www.maketecheasier.com/finding-raspberry-pi-system-information/</a></p>
 <dl class="class">
 <dt id="janitoo_datalog_rrd.components.RrdDatasource">
-<em class="property">class </em><tt class="descclassname">janitoo_datalog_rrd.components.</tt><tt class="descname">RrdDatasource</tt><big>(</big><em>bus=None</em>, <em>addr=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">janitoo.component.JNTComponent</span></tt></p>
+<em class="property">class </em><code class="descclassname">janitoo_datalog_rrd.components.</code><code class="descname">RrdDatasource</code><span class="sig-paren">(</span><em>bus=None</em>, <em>addr=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.component.JNTComponent</span></code></p>
 <p>Use psutil to retrieve informations.</p>
 <dl class="method">
 <dt id="janitoo_datalog_rrd.components.RrdDatasource.check_heartbeat">
-<tt class="descname">check_heartbeat</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.check_heartbeat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_heartbeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.check_heartbeat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that the component is &#8216;available&#8217;</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.components.RrdDatasource.get_http_rrd_file">
-<tt class="descname">get_http_rrd_file</tt><big>(</big><em>node_uuid</em>, <em>index</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.get_http_rrd_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.get_http_rrd_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_http_rrd_file</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.get_http_rrd_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.get_http_rrd_file" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.components.RrdDatasource.get_package_name">
-<tt class="descname">get_package_name</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.get_package_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.get_package_name" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_package_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.get_package_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.get_package_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the name of the package. Needed to publish static files</p>
 <p><strong>MUST</strong> be copy paste in every extension that publish statics files</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.components.RrdDatasource.get_rrd_label">
-<tt class="descname">get_rrd_label</tt><big>(</big><em>node_uuid</em>, <em>index</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.get_rrd_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.get_rrd_label" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_rrd_label</code><span class="sig-paren">(</span><em>node_uuid</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.get_rrd_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.get_rrd_label" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.components.RrdDatasource.start">
-<tt class="descname">start</tt><big>(</big><em>mqttc</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.start" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start</code><span class="sig-paren">(</span><em>mqttc</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the component.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.components.RrdDatasource.stop">
-<tt class="descname">stop</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.stop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdDatasource.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdDatasource.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop the component.</p>
 </dd></dl>
 
@@ -480,18 +480,18 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 
 <dl class="class">
 <dt id="janitoo_datalog_rrd.components.RrdResourceComponent">
-<em class="property">class </em><tt class="descclassname">janitoo_datalog_rrd.components.</tt><tt class="descname">RrdResourceComponent</tt><big>(</big><em>bus=None</em>, <em>addr=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdResourceComponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdResourceComponent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">janitoo_factory.threads.http.BasicResourceComponent</span></tt></p>
+<em class="property">class </em><code class="descclassname">janitoo_datalog_rrd.components.</code><code class="descname">RrdResourceComponent</code><span class="sig-paren">(</span><em>bus=None</em>, <em>addr=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdResourceComponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdResourceComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo_factory.threads.http.BasicResourceComponent</span></code></p>
 <p>A resource ie /rrd</p>
 <dl class="method">
 <dt id="janitoo_datalog_rrd.components.RrdResourceComponent.check_heartbeat">
-<tt class="descname">check_heartbeat</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdResourceComponent.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdResourceComponent.check_heartbeat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_heartbeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdResourceComponent.check_heartbeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdResourceComponent.check_heartbeat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that the component is &#8216;available&#8217;</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="janitoo_datalog_rrd.components.RrdResourceComponent.get_package_name">
-<tt class="descname">get_package_name</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdResourceComponent.get_package_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdResourceComponent.get_package_name" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_package_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#RrdResourceComponent.get_package_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.RrdResourceComponent.get_package_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the name of the package. Needed to publish static files</p>
 <p><strong>MUST</strong> be copy paste in every extension that publish statics files</p>
 </dd></dl>
@@ -500,12 +500,12 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 
 <dl class="function">
 <dt id="janitoo_datalog_rrd.components.make_datasource">
-<tt class="descclassname">janitoo_datalog_rrd.components.</tt><tt class="descname">make_datasource</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#make_datasource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.make_datasource" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">janitoo_datalog_rrd.components.</code><code class="descname">make_datasource</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#make_datasource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.make_datasource" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="janitoo_datalog_rrd.components.make_http_resource">
-<tt class="descclassname">janitoo_datalog_rrd.components.</tt><tt class="descname">make_http_resource</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#make_http_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.make_http_resource" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">janitoo_datalog_rrd.components.</code><code class="descname">make_http_resource</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/components.html#make_http_resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.components.make_http_resource" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -514,8 +514,8 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 <p>The Datalog RRD server</p>
 <dl class="class">
 <dt id="janitoo_datalog_rrd.server.DatalogServer">
-<em class="property">class </em><tt class="descclassname">janitoo_datalog_rrd.server.</tt><tt class="descname">DatalogServer</tt><big>(</big><em>options</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/server.html#DatalogServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.server.DatalogServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">janitoo.server.JNTServer</span></tt></p>
+<em class="property">class </em><code class="descclassname">janitoo_datalog_rrd.server.</code><code class="descname">DatalogServer</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/server.html#DatalogServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.server.DatalogServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.server.JNTServer</span></code></p>
 <p>The data logger Server</p>
 </dd></dl>
 
@@ -526,12 +526,12 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 <p>Store and graph data with rrdtools</p>
 <dl class="class">
 <dt id="janitoo_datalog_rrd.thread.RrdThread">
-<em class="property">class </em><tt class="descclassname">janitoo_datalog_rrd.thread.</tt><tt class="descname">RrdThread</tt><big>(</big><em>options={}</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/thread.html#RrdThread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.thread.RrdThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">janitoo.thread.JNTBusThread</span></tt></p>
+<em class="property">class </em><code class="descclassname">janitoo_datalog_rrd.thread.</code><code class="descname">RrdThread</code><span class="sig-paren">(</span><em>options={}</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/thread.html#RrdThread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.thread.RrdThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">janitoo.thread.JNTBusThread</span></code></p>
 <p>The grapher thread</p>
 <dl class="method">
 <dt id="janitoo_datalog_rrd.thread.RrdThread.init_bus">
-<tt class="descname">init_bus</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/thread.html#RrdThread.init_bus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.thread.RrdThread.init_bus" title="Permalink to this definition">¶</a></dt>
+<code class="descname">init_bus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/thread.html#RrdThread.init_bus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.thread.RrdThread.init_bus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build the bus</p>
 </dd></dl>
 
@@ -539,7 +539,7 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
 
 <dl class="function">
 <dt id="janitoo_datalog_rrd.thread.make_thread">
-<tt class="descclassname">janitoo_datalog_rrd.thread.</tt><tt class="descname">make_thread</tt><big>(</big><em>options</em>, <em>force=False</em><big>)</big><a class="reference internal" href="../_modules/janitoo_datalog_rrd/thread.html#make_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.thread.make_thread" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">janitoo_datalog_rrd.thread.</code><code class="descname">make_thread</code><span class="sig-paren">(</span><em>options</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/janitoo_datalog_rrd/thread.html#make_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#janitoo_datalog_rrd.thread.make_thread" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -561,7 +561,7 @@ since we use 1800 seconds periods and not 5 minutes, so you might need to modify
     </p>
     <p>
         &copy; Copyright 2014,2015,2016 Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.<br/>
     </p>
   </div>
 </footer>
