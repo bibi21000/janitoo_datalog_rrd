@@ -32,7 +32,7 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-import os, sys
+import os
 import threading
 import pickle
 import datetime

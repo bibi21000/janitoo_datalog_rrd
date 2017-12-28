@@ -32,22 +32,18 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-import os, sys
+import os
 import threading
 import pickle
 import datetime
-from pkg_resources import get_distribution, DistributionNotFound
-from janitoo.thread import JNTBusThread, BaseThread
-from janitoo.options import get_option_autostart
-from janitoo.utils import HADD, HADD_SEP
-from janitoo.utils import TOPIC_VALUES_USERS, TOPIC_VALUES
-from janitoo.utils import json_dumps, json_loads
-from janitoo.component import JNTComponent
-from janitoo.node import JNTNode
-from janitoo.value import JNTValue
+from pkg_resources import DistributionNotFound
+from janitoo.thread import BaseThread
+from janitoo.utils import HADD
+from janitoo.utils import TOPIC_VALUES
+from janitoo.utils import json_loads
 from janitoo.bus import JNTBus
 from janitoo.mqtt import MQTTClient
-from janitoo.compat import str_to_native, to_ascii
+from janitoo.compat import to_ascii
 
 import rrdtool
 
@@ -170,7 +166,7 @@ class RrdStoreThread(BaseThread):
         if self._rrd_rotate_next_run < datetime.datetime.now():
             now = datetime.datetime.now()
             #Check for data that need a rotation
-            etime = (datetime.datetime.now() - self.epoch).total_seconds()
+            etime = (now - self.epoch).total_seconds()
             try:
                 for key in list(self._cache.keys()):
                     try:
@@ -187,7 +183,7 @@ class RrdStoreThread(BaseThread):
                         logger.exception("[%s] - Exception when rotating %s in cache", self.__class__.__name__, key)
             except Exception:
                 logger.exception("[%s] - Exception when rotating in cache", self.__class__.__name__)
-            self._rrd_rotate_next_run = datetime.datetime.now() + datetime.timedelta(seconds=self._rrd_rotate_ttl)
+            self._rrd_rotate_next_run = now + datetime.timedelta(seconds=self._rrd_rotate_ttl)
         self._reloadevent.wait(self.loop_sleep)
 
     def on_value(self, client, userdata, message):
@@ -229,7 +225,6 @@ class RrdStoreThread(BaseThread):
         """ Create an in dex of keys
             :ret: a list of tuple () of values in cache
         """
-        ret = []
         rrds = list(self._cache.keys())
         for rrd in rrds:
             try:
@@ -796,10 +791,9 @@ class RrdBus(JNTBus):
     def set_action(self, node_uuid, index, data):
         """Act on the server
         """
-        params = {}
         if data == "flush":
             if self.store is not None:
-                self.store.flush()
+                self.store.flush_all()
 
     def start(self, mqttc, trigger_thread_reload_cb=None):
         JNTBus.start(self, mqttc, trigger_thread_reload_cb)
