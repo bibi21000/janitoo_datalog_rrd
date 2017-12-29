@@ -225,6 +225,7 @@ class RrdStoreThread(BaseThread):
         """ Create an in dex of keys
             :ret: a list of tuple () of values in cache
         """
+        ret = []
         rrds = list(self._cache.keys())
         for rrd in rrds:
             try:
