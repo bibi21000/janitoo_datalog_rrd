@@ -796,16 +796,16 @@ class RrdBus(JNTBus):
             if self.store is not None:
                 self.store.flush_all()
 
-    def start(self, mqttc, trigger_thread_reload_cb=None):
-        JNTBus.start(self, mqttc, trigger_thread_reload_cb)
+    def start(self, mqttc, trigger_thread_reload_cb=None, **kwargs):
+        JNTBus.start(self, mqttc, trigger_thread_reload_cb, **kwargs)
         self.store = RrdStoreThread("datarrd_store", self.options.data)
         self.store.config_thread(cache_rrd_ttl=self.values["cache_rrd_ttl"].data,
                 cache_pickle_ttl=self.values["cache_pickle_ttl"].data,
                 cache_dead_ttl=self.values["cache_dead_ttl"].data)
         self.store.start()
 
-    def stop(self):
-        JNTBus.stop(self)
+    def stop(self, **kwargs):
+        JNTBus.stop(self, **kwargs)
         if self.store is not None:
             self.store.stop()
             self.store = None
