@@ -34,22 +34,13 @@ logger = logging.getLogger(__name__)
 
 import os
 import threading
-import pickle
-import datetime
-from pkg_resources import get_distribution, DistributionNotFound
-from janitoo.thread import JNTBusThread, BaseThread
-from janitoo.options import get_option_autostart
-from janitoo.utils import HADD, HADD_SEP
-from janitoo.utils import TOPIC_VALUES_USERS
-from janitoo.utils import json_dumps, json_loads
+from pkg_resources import get_distribution
+from janitoo.thread import JNTBusThread
+from janitoo.utils import HADD_SEP
+from janitoo.utils import json_dumps
 from janitoo.component import JNTComponent
-from janitoo.node import JNTNode
-from janitoo.value import JNTValue
-from janitoo.bus import JNTBus
-from janitoo.mqtt import MQTTClient
 from janitoo_factory.threads.http import BasicResourceComponent
 from janitoo_datalog_rrd.bus import RRD_DIR
-import rrdtool
 
 ##############################################################
 #Check that we are in sync with the official command classes

@@ -36,9 +36,7 @@ import os
 import threading
 import pickle
 import datetime
-from pkg_resources import DistributionNotFound
 from janitoo.thread import BaseThread
-from janitoo.utils import HADD
 from janitoo.utils import TOPIC_VALUES
 from janitoo.utils import json_loads
 from janitoo.bus import JNTBus
@@ -670,15 +668,15 @@ class RrdStoreThread(BaseThread):
         filename = self.get_list_filename()
         rrd_list = []
         if os.path.exists(filename) == True:
-            with open(filename) as file:    # Use file to refer to the file object
-                data = file.read()
+            with open(filename) as ffile:    # Use file to refer to the file object
+                data = ffile.read()
                 rrd_list = data.split("|")
         if rrd_file in rrd_list:
             return
         rrd_list.append(rrd_file)
         line = '|'.join(rrd_list)
-        with open(filename, "w") as file:
-            file.write(line)
+        with open(filename, "w") as ffile:
+            ffile.write(line)
 
     def remove_rrd_from_list(self, rrd_file):
         """Remove the rrd from index.txt
@@ -686,15 +684,15 @@ class RrdStoreThread(BaseThread):
         filename = self.get_list_filename()
         rrd_list = []
         if os.path.exists(filename) == True:
-            with open(filename) as file:    # Use file to refer to the file object
-                data = file.read()
+            with open(filename) as ffile:    # Use file to refer to the file object
+                data = ffile.read()
                 rrd_list = data.split("|")
         if rrd_file not in rrd_list:
             return
         rrd_list.remove(rrd_file)
         line = '|'.join(rrd_list)
-        with open(filename, "w") as file:
-            file.write(line)
+        with open(filename, "w") as ffile:
+            ffile.write(line)
 
 class RrdBus(JNTBus):
     """A pseudo-bus to manage RRDTools

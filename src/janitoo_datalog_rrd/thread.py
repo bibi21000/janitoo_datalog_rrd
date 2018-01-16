@@ -29,15 +29,10 @@ __copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi2100
 import logging
 logger = logging.getLogger(__name__)
 
-import os, sys
-import threading
-from pkg_resources import get_distribution, DistributionNotFound
-from janitoo.thread import JNTBusThread, BaseThread
+import os
+from pkg_resources import DistributionNotFound
+from janitoo.thread import JNTBusThread
 from janitoo.options import get_option_autostart
-from janitoo.utils import HADD
-from janitoo.node import JNTNode
-from janitoo.value import JNTValue
-from janitoo.classes import COMMAND_DESC
 
 OID = 'datarrd'
 def make_thread(options, force=False):
