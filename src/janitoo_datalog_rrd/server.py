@@ -29,8 +29,7 @@ import logging
 logger = logging.getLogger(__name__)
 import os
 from pkg_resources import get_distribution
-from janitoo.utils import HADD
-from janitoo.utils import json_dumps, json_loads
+from janitoo.utils import json_loads
 from janitoo.mqtt import MQTTClient
 from janitoo.server import JNTServer
 

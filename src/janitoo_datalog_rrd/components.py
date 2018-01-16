@@ -34,10 +34,6 @@ logger = logging.getLogger(__name__)
 
 import os
 import threading
-from pkg_resources import get_distribution
-from janitoo.thread import JNTBusThread
-from janitoo.utils import HADD_SEP
-from janitoo.utils import json_dumps
 from janitoo.component import JNTComponent
 from janitoo_factory.threads.http import BasicResourceComponent
 from janitoo_datalog_rrd.bus import RRD_DIR
