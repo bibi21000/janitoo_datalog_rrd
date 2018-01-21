@@ -147,9 +147,7 @@
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">DistributionNotFound</span>
 <span class="kn">from</span> <span class="nn">janitoo.thread</span> <span class="k">import</span> <span class="n">BaseThread</span>
-<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="k">import</span> <span class="n">HADD</span>
 <span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="k">import</span> <span class="n">TOPIC_VALUES</span>
 <span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="k">import</span> <span class="n">json_loads</span>
 <span class="kn">from</span> <span class="nn">janitoo.bus</span> <span class="k">import</span> <span class="n">JNTBus</span>
@@ -336,6 +334,7 @@
         <span class="sd">&quot;&quot;&quot; Create an in dex of keys</span>
 <span class="sd">            :ret: a list of tuple () of values in cache</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">rrds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="k">for</span> <span class="n">rrd</span> <span class="ow">in</span> <span class="n">rrds</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -780,15 +779,15 @@
         <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list_filename</span><span class="p">()</span>
         <span class="n">rrd_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="c1"># Use file to refer to the file object</span>
-                <span class="n">data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ffile</span><span class="p">:</span>    <span class="c1"># Use file to refer to the file object</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">ffile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
                 <span class="n">rrd_list</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rrd_file</span> <span class="ow">in</span> <span class="n">rrd_list</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">rrd_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rrd_file</span><span class="p">)</span>
         <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rrd_list</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ffile</span><span class="p">:</span>
+            <span class="n">ffile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RrdStoreThread.remove_rrd_from_list"><a class="viewcode-back" href="../../api/index.html#janitoo_datalog_rrd.bus.RrdStoreThread.remove_rrd_from_list">[docs]</a>    <span class="k">def</span> <span class="nf">remove_rrd_from_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rrd_file</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove the rrd from index.txt</span>
@@ -796,15 +795,15 @@
         <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list_filename</span><span class="p">()</span>
         <span class="n">rrd_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>    <span class="c1"># Use file to refer to the file object</span>
-                <span class="n">data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">ffile</span><span class="p">:</span>    <span class="c1"># Use file to refer to the file object</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">ffile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
                 <span class="n">rrd_list</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rrd_file</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">rrd_list</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">rrd_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">rrd_file</span><span class="p">)</span>
         <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rrd_list</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div></div>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ffile</span><span class="p">:</span>
+            <span class="n">ffile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="RrdBus"><a class="viewcode-back" href="../../api/index.html#janitoo_datalog_rrd.bus.RrdBus">[docs]</a><span class="k">class</span> <span class="nc">RrdBus</span><span class="p">(</span><span class="n">JNTBus</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A pseudo-bus to manage RRDTools</span>
@@ -906,16 +905,16 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">flush_all</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="RrdBus.start"><a class="viewcode-back" href="../../api/index.html#janitoo_datalog_rrd.bus.RrdBus.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">JNTBus</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="p">)</span>
+<div class="viewcode-block" id="RrdBus.start"><a class="viewcode-back" href="../../api/index.html#janitoo_datalog_rrd.bus.RrdBus.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">JNTBus</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mqttc</span><span class="p">,</span> <span class="n">trigger_thread_reload_cb</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="o">=</span> <span class="n">RrdStoreThread</span><span class="p">(</span><span class="s2">&quot;datarrd_store&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">config_thread</span><span class="p">(</span><span class="n">cache_rrd_ttl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="s2">&quot;cache_rrd_ttl&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
                 <span class="n">cache_pickle_ttl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="s2">&quot;cache_pickle_ttl&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
                 <span class="n">cache_dead_ttl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="s2">&quot;cache_dead_ttl&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="RrdBus.stop"><a class="viewcode-back" href="../../api/index.html#janitoo_datalog_rrd.bus.RrdBus.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">JNTBus</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="viewcode-block" id="RrdBus.stop"><a class="viewcode-back" href="../../api/index.html#janitoo_datalog_rrd.bus.RrdBus.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">JNTBus</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="o">=</span> <span class="kc">None</span></div>

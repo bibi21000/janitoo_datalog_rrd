@@ -145,22 +145,9 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="k">import</span> <span class="n">get_distribution</span><span class="p">,</span> <span class="n">DistributionNotFound</span>
-<span class="kn">from</span> <span class="nn">janitoo.thread</span> <span class="k">import</span> <span class="n">JNTBusThread</span><span class="p">,</span> <span class="n">BaseThread</span>
-<span class="kn">from</span> <span class="nn">janitoo.options</span> <span class="k">import</span> <span class="n">get_option_autostart</span>
-<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="k">import</span> <span class="n">HADD</span><span class="p">,</span> <span class="n">HADD_SEP</span>
-<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="k">import</span> <span class="n">TOPIC_VALUES_USERS</span>
-<span class="kn">from</span> <span class="nn">janitoo.utils</span> <span class="k">import</span> <span class="n">json_dumps</span><span class="p">,</span> <span class="n">json_loads</span>
 <span class="kn">from</span> <span class="nn">janitoo.component</span> <span class="k">import</span> <span class="n">JNTComponent</span>
-<span class="kn">from</span> <span class="nn">janitoo.node</span> <span class="k">import</span> <span class="n">JNTNode</span>
-<span class="kn">from</span> <span class="nn">janitoo.value</span> <span class="k">import</span> <span class="n">JNTValue</span>
-<span class="kn">from</span> <span class="nn">janitoo.bus</span> <span class="k">import</span> <span class="n">JNTBus</span>
-<span class="kn">from</span> <span class="nn">janitoo.mqtt</span> <span class="k">import</span> <span class="n">MQTTClient</span>
 <span class="kn">from</span> <span class="nn">janitoo_factory.threads.http</span> <span class="k">import</span> <span class="n">BasicResourceComponent</span>
 <span class="kn">from</span> <span class="nn">janitoo_datalog_rrd.bus</span> <span class="k">import</span> <span class="n">RRD_DIR</span>
-<span class="kn">import</span> <span class="nn">rrdtool</span>
 
 <span class="c1">##############################################################</span>
 <span class="c1">#Check that we are in sync with the official command classes</span>
