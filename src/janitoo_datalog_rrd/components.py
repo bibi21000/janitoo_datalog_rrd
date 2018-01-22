@@ -117,7 +117,7 @@ class RrdDatasource(JNTComponent):
     def start(self, mqttc):
         """Start the component.
         """
-        logger.warning("[%s] - Start component : %s ", self.__class__.__name__, self.values['rrd_file'].data)
+        logger.info("[%s] - Start component : %s ", self.__class__.__name__, self.values['rrd_file'].data)
         JNTComponent.start(self, mqttc)
         value_source = self.values['source']
         config = {}
